@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendaftaran Pengurus OSIS SMAN 11 Wajo | Periode 2026/2027</title>
+  <meta name="description" content="Portal Resmi Pendaftaran Calon Pengurus OSIS SMAN 11 Wajo Periode 2026/2027." />
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              950: '#050b18',
+              900: '#0a1428',
+              800: '#112240',
+            },
+            royal: {
+              500: '#2563eb',
+              600: '#1d4ed8',
+            },
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Glassmorphism & Background Styling */
+    body {
+      background-color: #050b18;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.28) 0px, transparent 50%),
+        radial-gradient(at 100% 15%, rgba(16, 185, 129, 0.18) 0px, transparent 45%),
+        radial-gradient(at 50% 100%, rgba(30, 58, 138, 0.32) 0px, transparent 55%);
+      background-attachment: fixed;
+      color: #f8fafc;
+      min-height: 100vh;
+    }
+
+    .glass-panel {
+      background: rgba(17, 34, 64, 0.45);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 8px 32px 0 rgba(2, 6, 23, 0.45);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(52, 211, 153, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .glass-input {
+      background: rgba(10, 20, 40, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #f8fafc;
+      transition: all 0.2s ease;
+    }
+
+    .glass-input:focus {
+      outline: none;
+      border-color: #34d399;
+      box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.18);
+      background: rgba(10, 20, 40, 0.85);
+    }
+
+    .glass-input::placeholder {
+      color: rgba(148, 163, 184, 0.6);
+    }
+
+    /* Select Option Styling */
+    select.glass-input option {
+      background-color: #0a1428;
+      color: #f8fafc;
+    }
+
+    /* Section Fade Animation */
+    .tab-section {
+      display: none;
+      animation: fadeSlideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050b18;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(52, 211, 153, 0.5);
+    }
+
+    /* Print Styles for Digital Registration Card */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      header, nav, footer, .no-print {
+        display: none !important;
+      }
+      #print-ticket-area {
+        display: block !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border: 2px solid #1e293b !important;
+        box-shadow: none !important;
+      }
+      #print-ticket-area * {
+        color: #0f172a !important;
+      }
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-500/30 selection:text-emerald-200 flex flex-col min-h-screen">
+
+  <!-- Toast Notification Container (Replaces alert) -->
+  <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2.5 max-w-sm w-full pointer-events-none"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        
+        <!-- Brand / Logo -->
+        <button onclick="switchTab('beranda')" class="flex items-center gap-3 text-left group focus:outline-none">
+          <div class="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-gradient-to-br from-royal-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+            <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-display font-extrabold text-base md:text-lg tracking-tight text-white">OSIS SMAN 11 WAJO</span>
+              <span class="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">2026/2027</span>
+            </div>
+            <p class="text-xs text-slate-400 hidden sm:block">Portal Open Recruitment Pengurus</p>
+          </div>
+        </button>
+
+        <!-- Desktop Navigation Tabs -->
+        <nav class="hidden lg:flex items-center gap-1.5 bg-navy-950/50 p-1.5 rounded-2xl border border-white/10" aria-label="Navigasi Utama">
+          <button onclick="switchTab('beranda')" data-nav="beranda" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span>Beranda</span>
+          </button>
+          <button onclick="switchTab('persyaratan')" data-nav="persyaratan" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
+            <i data-lucide="file-check-2" class="w-4 h-4"></i>
+            <span>Persyaratan</span>
+          </button>
+          <button onclick="switchTab('formulir')" data-nav="formulir" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
+            <i data-lucide="clipboard-edit" class="w-4 h-4"></i>
+            <span>Formulir</span>
+          </button>
+          <button onclick="switchTab('berkas')" data-nav="berkas" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
+            <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+            <span>Upload Berkas</span>
+          </button>
+          <button onclick="switchTab('konfirmasi')" data-nav="konfirmasi" class="nav-btn px-3.5 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2">
+            <i data-lucide="badge-check" class="w-4 h-4"></i>
+            <span>Konfirmasi</span>
+          </button>
+        </nav>
+
+        <!-- Auto-save Status & Mobile Menu Button -->
+        <div class="flex items-center gap-2.5">
+          <div id="autosave-badge" class="hidden sm:flex items-center gap-1.5 text-xs text-slate-300 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Tersimpan Otomatis</span>
+          </div>
+          <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 focus:outline-none" aria-label="Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10 bg-navy-950/95 backdrop-blur-xl px-4 py-3 space-y-1.5">
+      <button onclick="switchTab('beranda'); toggleMobileMenu()" data-nav="beranda" class="nav-btn w-full px-4 py-2.5 rounded-xl text-sm font-medium flex items-center gap-3 text-left">
+        <i data-lucide="home" class="w-4 h-4"></i>
+        <span>1. Halaman Beranda</span>
+      </button>
+      <button onclick="switchTab('persyaratan'); toggleMobileMenu()" data-nav="persyaratan" class="nav-btn w-full px-4 py-2.5 rounded-xl text-sm font-medium flex items-center gap-3 text-left">
+        <i data-lucide="file-check-2" class="w-4 h-4"></i>
+        <span>2. Informasi Persyaratan</span>
+      </button>
+      <button onclick="switchTab('formulir'); toggleMobileMenu()" data-nav="formulir" class="nav-btn w-full px-4 py-2.5 rounded-xl text-sm font-medium flex items-center gap-3 text-left">
+        <i data-lucide="clipboard-edit" class="w-4 h-4"></i>
+        <span>3. Formulir Pendaftaran</span>
+      </button>
+      <button onclick="switchTab('berkas'); toggleMobileMenu()" data-nav="berkas" class="nav-btn w-full px-4 py-2.5 rounded-xl text-sm font-medium flex items-center gap-3 text-left">
+        <i data-lucide="upload-cloud" class="w-4 h-4"></i>
+        <span>4. Upload Berkas</span>
+      </button>
+      <button onclick="switchTab('konfirmasi'); toggleMobileMenu()" data-nav="konfirmasi" class="nav-btn w-full px-4 py-2.5 rounded-xl text-sm font-medium flex items-center gap-3 text-left">
+        <i data-lucide="badge-check" class="w-4 h-4"></i>
+        <span>5. Konfirmasi Pendaftaran</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Step Progress Bar (Visible on Form Steps) -->
+  <div id="step-indicator-bar" class="hidden border-b border-white/10 bg-navy-900/40 backdrop-blur-md no-print">
+    <div class="max-w-5xl mx-auto px-4 py-3">
+      <div class="flex items-center justify-between text-xs sm:text-sm">
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-0.5 rounded-full bg-royal-500/25 text-blue-300 border border-blue-400/30 font-semibold" id="step-badge-text">Langkah 1 dari 3</span>
+          <span class="text-slate-300 font-medium" id="step-title-text">Pengisian Biodata & Motivasi</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <div id="prog-1" class="w-8 sm:w-14 h-1.5 rounded-full bg-emerald-400 transition-all"></div>
+          <div id="prog-2" class="w-8 sm:w-14 h-1.5 rounded-full bg-white/15 transition-all"></div>
+          <div id="prog-3" class="w-8 sm:w-14 h-1.5 rounded-full bg-white/15 transition-all"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
+
+    <!-- ========================================================= -->
+    <!-- SECTION 1: HALAMAN BERANDA                                -->
+    <!-- ========================================================= -->
+    <section id="section-beranda" class="tab-section active space-y-10">
+      
+      <!-- Hero Banner -->
+      <div class="glass-panel rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden">
+        <!-- Decorative Glow Orbs -->
+        <div class="absolute -top-24 -right-24 w-72 h-72 bg-royal-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-xs sm:text-sm font-semibold">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>Open Recruitment Pengurus OSIS Periode 2026/2027</span>
+            </div>
+
+            <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Wujudkan Pemimpin Muda Berintegritas di <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-300 to-emerald-400">SMAN 11 Wajo</span>
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+              Jadilah bagian dari penggerak inovasi, kreativitas, dan prestasi siswa. Kembangkan potensi kepemimpinanmu bersama Organisasi Siswa Intra Sekolah (OSIS) SMA Negeri 11 Wajo.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button onclick="switchTab('formulir')" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-royal-600 to-emerald-500 hover:from-royal-500 hover:to-emerald-400 text-white font-semibold shadow-lg shadow-emerald-500/20 flex items-center gap-2.5 transition-all transform hover:-translate-y-0.5">
+                <span>Daftar Sekarang</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </button>
+              <button onclick="switchTab('persyaratan')" class="px-6 py-3.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 font-semibold flex items-center gap-2.5 transition-all">
+                <i data-lucide="book-open" class="w-5 h-5 text-emerald-400"></i>
+                <span>Lihat Persyaratan</span>
+              </button>
+            </div>
+
+            <!-- Quick Meta Info -->
+            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 max-w-lg">
+              <div>
+                <p class="text-xl sm:text-2xl font-display font-bold text-white">8 Sekbid</p>
+                <p class="text-xs text-slate-400">Bidang Kepengurusan</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-display font-bold text-emerald-400">Kelas X & XI</p>
+                <p class="text-xs text-slate-400">Terbuka untuk Siswa</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-display font-bold text-blue-400">100% Online</p>
+                <p class="text-xs text-slate-400">Pendaftaran & Berkas</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side Highlight Card: Jadwal Seleksi -->
+          <div class="lg:col-span-5">
+            <div class="glass-card rounded-2xl p-6 space-y-5 border-white/15">
+              <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                <div class="flex items-center gap-2.5">
+                  <div class="p-2 rounded-xl bg-blue-500/20 text-blue-300">
+                    <i data-lucide="calendar-days" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h2 class="font-display font-bold text-white text-base">Linimasa Seleksi 2026</h2>
+                    <p class="text-xs text-slate-400">Jadwal Resmi Panitia Pemilihan OSIS</p>
+                  </div>
+                </div>
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-semibold">Dibuka</span>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex gap-3.5">
+                  <div class="flex flex-col items-center">
+                    <div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-300 flex items-center justify-center text-xs font-bold">1</div>
+                    <div class="w-0.5 h-full bg-white/10 my-1"></div>
+                  </div>
+                  <div class="pb-2">
+                    <p class="text-xs font-semibold text-emerald-400">14 – 21 November 2026</p>
+                    <h3 class="text-sm font-bold text-white">Pendaftaran & Unggah Berkas</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">Pengisian formulir daring dan kelengkapan administrasi.</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-3.5">
+                  <div class="flex flex-col items-center">
+                    <div class="w-7 h-7 rounded-full bg-blue-500/20 border border-blue-400 text-blue-300 flex items-center justify-center text-xs font-bold">2</div>
+                    <div class="w-0.5 h-full bg-white/10 my-1"></div>
+                  </div>
+                  <div class="pb-2">
+                    <p class="text-xs font-semibold text-blue-400">23 – 25 November 2026</p>
+                    <h3 class="text-sm font-bold text-white">Tes Wawancara & Kepemimpinan</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">Uji wawasan organisasi, problem solving, dan komitmen.</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-3.5">
+                  <div class="flex flex-col items-center">
+                    <div class="w-7 h-7 rounded-full bg-purple-500/20 border border-purple-400 text-purple-300 flex items-center justify-center text-xs font-bold">3</div>
+                    <div class="w-0.5 h-full bg-white/10 my-1"></div>
+                  </div>
+                  <div class="pb-2">
+                    <p class="text-xs font-semibold text-purple-400">28 – 29 November 2026</p>
+                    <h3 class="text-sm font-bold text-white">Latihan Dasar Kepemimpinan (LDK)</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">Pembekalan karakter & manajemen program kerja.</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-3.5">
+                  <div class="flex flex-col items-center">
+                    <div class="w-7 h-7 rounded-full bg-amber-500/20 border border-amber-400 text-amber-300 flex items-center justify-center text-xs font-bold">4</div>
+                  </div>
+                  <div>
+                    <p class="text-xs font-semibold text-amber-400">Desember 2026</p>
+                    <h3 class="text-sm font-bold text-white">Pengumuman & Pelantikan Resmi</h3>
+                    <p class="text-xs text-slate-400 mt-0.5">Upacara pelantikan pengurus OSIS periode 2026/2027.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seksi Bidang (Sekbid) Overview -->
+      <div class="space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-white">Seksi Bidang (Sekbid) OSIS SMAN 11 Wajo</h2>
+            <p class="text-sm text-slate-400 mt-1">Kenali 8 pilar bidang kerja untuk memilih posisi yang paling sesuai dengan minat dan bakatmu.</p>
+          </div>
+          <button onclick="switchTab('formulir')" class="text-sm font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 self-start sm:self-auto">
+            <span>Pilih Sekbid di Formulir</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center">
+              <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 1: Keimanan & Ketakwaan</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Pembinaan kegiatan keagamaan, peringatan hari besar keagamaan, dan akhlak mulia siswa.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 2: Budi Pekerti & Bela Negara</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Tata tertib sekolah, upacara bendera, kedisiplinan siswa, dan wawasan kebangsaan.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 3: Kepemimpinan & Demokrasi</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Latihan kepemimpinan siswa, forum aspirasi, serta koordinasi kegiatan ekstrakurikuler.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center">
+              <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 4: Prestasi Akademik & Sains</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Lomba karya ilmiah, olimpiade, literasi sekolah, dan pengembangan budaya belajar.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center">
+              <i data-lucide="trophy" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 5: Jasmani, Olahraga & Kesehatan</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Pekan olahraga antar kelas (Porseni), kampanye hidup sehat, dan UKS.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center">
+              <i data-lucide="palette" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 6: Apresiasi Seni & Budaya</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Pentas seni, pelestarian budaya daerah Wajo/Bugis, musik, tari, dan teater siswa.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-300 flex items-center justify-center">
+              <i data-lucide="laptop" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 7: TIK, Media & Humas</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Publikasi digital, desain grafis, dokumentasi kegiatan, dan pengelolaan media sosial OSIS.</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 space-y-2.5">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/20 text-teal-300 flex items-center justify-center">
+              <i data-lucide="sprout" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-display font-bold text-white text-sm">Sekbid 8: Kewirausahaan & Lingkungan</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">Koperasi siswa, bazar kreativitas, program sekolah Adiwiyata, dan peduli lingkungan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 2: INFORMASI PERSYARATAN                          -->
+    <!-- ========================================================= -->
+    <section id="section-persyaratan" class="tab-section space-y-8">
+      <div class="glass-panel rounded-3xl p-6 sm:p-8 md:p-10 space-y-8">
+        <div class="border-b border-white/10 pb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Panduan & Ketentuan</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">Informasi Persyaratan Calon Pengurus OSIS</h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-2">Pastikan seluruh persyaratan umum dan berkas administrasi di bawah ini telah dipenuhi sebelum melanjutkan ke pengisian formulir.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Syarat Umum -->
+          <div class="glass-card rounded-2xl p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center">
+                <i data-lucide="user-check" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">A. Persyaratan Umum</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-300">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <span>Bertaqwa kepada Tuhan Yang Maha Esa serta berakhlak mulia.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <span>Terdaftar sebagai siswa/siswi aktif <strong>Kelas X atau Kelas XI</strong> di SMA Negeri 11 Wajo pada Tahun Pelajaran 2026/2027.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <span>Memiliki budi pekerti yang baik, sopan santun, dan tidak pernah melanggar tata tertib berat sekolah.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <span>Memiliki kemauan, kemampuan, dan pengetahuan memadai untuk berorganisasi serta mampu membagi waktu belajar.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <span>Mendapatkan izin resmi dari Orang Tua / Wali untuk mengikuti seluruh rangkaian kegiatan OSIS.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <span>Bersedia mengikuti seluruh tahapan seleksi (Administrasi, Wawancara, dan Latihan Dasar Kepemimpinan).</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Berkas Wajib -->
+          <div class="glass-card rounded-2xl p-6 space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center">
+                <i data-lucide="folder-check" class="w-5 h-5"></i>
+              </div>
+              <h3 class="font-display font-bold text-lg text-white">B. Kelengkapan Berkas Unggahan</h3>
+            </div>
+            <p class="text-xs text-slate-400">Siapkan file digital berikut (ukuran maksimal <strong>2 MB</strong> per file):</p>
+            <div class="space-y-3">
+              <div class="p-3.5 rounded-xl bg-navy-950/50 border border-white/10 flex items-start justify-between gap-3">
+                <div>
+                  <h4 class="text-sm font-semibold text-white">1. Pas Foto Formal Terbaru (3x4)</h4>
+                  <p class="text-xs text-slate-400 mt-0.5">Seragam sekolah rapi, latar merah/biru. Format: JPG / PNG.</p>
+                </div>
+                <span class="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[11px] font-semibold shrink-0">Wajib</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-navy-950/50 border border-white/10 flex items-start justify-between gap-3">
+                <div>
+                  <h4 class="text-sm font-semibold text-white">2. Kartu Pelajar / Bukti NISN</h4>
+                  <p class="text-xs text-slate-400 mt-0.5">Scan/foto Kartu Pelajar SMAN 11 Wajo atau tangkapan layar NISN. Format: PDF / JPG / PNG.</p>
+                </div>
+                <span class="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[11px] font-semibold shrink-0">Wajib</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-navy-950/50 border border-white/10 flex items-start justify-between gap-3">
+                <div>
+                  <h4 class="text-sm font-semibold text-white">3. Surat Izin Orang Tua / Wali</h4>
+                  <p class="text-xs text-slate-400 mt-0.5">Surat pernyataan persetujuan yang ditandatangani Orang Tua/Wali. Format: PDF / JPG / PNG.</p>
+                </div>
+                <span class="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[11px] font-semibold shrink-0">Wajib</span>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-navy-950/50 border border-white/10 flex items-start justify-between gap-3">
+                <div>
+                  <h4 class="text-sm font-semibold text-white">4. Sertifikat Prestasi / Organisasi</h4>
+                  <p class="text-xs text-slate-400 mt-0.5">Piagam penghargaan lomba atau sertifikat kepengurusan sebelumnya (nilai tambah). Format: PDF / JPG / PNG.</p>
+                </div>
+                <span class="px-2 py-0.5 rounded-md bg-slate-500/20 text-slate-300 text-[11px] font-semibold shrink-0">Opsional</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alur Pendaftaran -->
+        <div class="glass-card rounded-2xl p-6 space-y-4">
+          <h3 class="font-display font-bold text-lg text-white flex items-center gap-2">
+            <i data-lucide="git-merge" class="w-5 h-5 text-emerald-400"></i>
+            <span>Alur Tata Cara Pendaftaran Daring</span>
+          </h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5">
+              <span class="text-xs font-bold text-blue-400">TAHAP 01</span>
+              <h4 class="font-bold text-white text-sm">Isi Biodata Lengkap</h4>
+              <p class="text-xs text-slate-400">Lengkapi identitas diri, pilihan Sekbid prioritas, serta visi dan misi.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5">
+              <span class="text-xs font-bold text-emerald-400">TAHAP 02</span>
+              <h4 class="font-bold text-white text-sm">Unggah Berkas Syarat</h4>
+              <p class="text-xs text-slate-400">Upload pas foto, kartu pelajar, surat izin orang tua, dan sertifikat.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5">
+              <span class="text-xs font-bold text-purple-400">TAHAP 03</span>
+              <h4 class="font-bold text-white text-sm">Konfirmasi & Cetak Kartu</h4>
+              <p class="text-xs text-slate-400">Periksa kembali data lalu kirim untuk mendapatkan Nomor Registrasi.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 space-y-1.5">
+              <span class="text-xs font-bold text-amber-400">TAHAP 04</span>
+              <h4 class="font-bold text-white text-sm">Verifikasi & Wawancara</h4>
+              <p class="text-xs text-slate-400">Konfirmasi nomor registrasi ke panitia dan ikuti jadwal wawancara.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+          <button onclick="switchTab('beranda')" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 text-sm font-semibold flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Kembali ke Beranda</span>
+          </button>
+          <button onclick="switchTab('formulir')" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-royal-600 to-emerald-500 hover:from-royal-500 hover:to-emerald-400 text-white text-sm font-semibold shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all">
+            <span>Saya Memenuhi Syarat, Lanjut Isi Formulir</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 3: FORMULIR PENDAFTARAN                           -->
+    <!-- ========================================================= -->
+    <section id="section-formulir" class="tab-section space-y-6">
+      <div class="glass-panel rounded-3xl p-6 sm:p-8 md:p-10">
+        <div class="border-b border-white/10 pb-6 mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Langkah 1 dari 3</span>
+            <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">Formulir Biodata Calon Pengurus</h2>
+            <p class="text-slate-300 text-sm mt-1">Isi seluruh kolom bertanda (<span class="text-rose-400">*</span>) dengan data yang sebenar-benarnya.</p>
+          </div>
+          <button type="button" onclick="resetFormPrompt()" class="text-xs text-slate-400 hover:text-rose-300 flex items-center gap-1.5 self-start sm:self-auto px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 transition-colors">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>Reset Formulir</span>
+          </button>
+        </div>
+
+        <form id="osis-form" onsubmit="handleFormNext(event)" class="space-y-8" novalidate>
+          
+          <!-- Sub-group 1: Identitas Pribadi -->
+          <div class="space-y-5">
+            <h3 class="font-display font-bold text-base text-emerald-300 flex items-center gap-2">
+              <i data-lucide="user" class="w-4 h-4"></i>
+              <span>1. Identitas Pribadi Siswa</span>
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <!-- Nama Lengkap -->
+              <div class="space-y-1.5">
+                <label for="namaLengkap" class="block text-sm font-medium text-slate-200">Nama Lengkap <span class="text-rose-400">*</span></label>
+                <input type="text" id="namaLengkap" name="namaLengkap" required placeholder="Contoh: Andi Muhammad Farhan" class="glass-input w-full px-4 py-3 rounded-xl text-sm" />
+                <p class="text-xs text-rose-400 hidden" id="err-namaLengkap">Nama lengkap wajib diisi (minimal 3 karakter).</p>
+              </div>
+
+              <!-- NIS / NISN -->
+              <div class="space-y-1.5">
+                <label for="nisn" class="block text-sm font-medium text-slate-200">NIS / NISN <span class="text-rose-400">*</span></label>
+                <input type="text" id="nisn" name="nisn" required inputmode="numeric" placeholder="Contoh: 0091234567" class="glass-input w-full px-4 py-3 rounded-xl text-sm" />
+                <p class="text-xs text-rose-400 hidden" id="err-nisn">NIS/NISN wajib diisi dengan angka yang valid.</p>
+              </div>
+
+              <!-- Kelas & Rombel -->
+              <div class="space-y-1.5">
+                <label for="kelas" class="block text-sm font-medium text-slate-200">Kelas / Rombel <span class="text-rose-400">*</span></label>
+                <select id="kelas" name="kelas" required class="glass-input w-full px-4 py-3 rounded-xl text-sm">
+                  <option value="">-- Pilih Kelas --</option>
+                  <optgroup label="Kelas X (Fase E)">
+                    <option value="X.1">X.1</option>
+                    <option value="X.2">X.2</option>
+                    <option value="X.3">X.3</option>
+                    <option value="X.4">X.4</option>
+                    <option value="X.5">X.5</option>
+                    <option value="X.6">X.6</option>
+                    <option value="X.7">X.7</option>
+                    <option value="X.8">X.8</option>
+                  </optgroup>
+                  <optgroup label="Kelas XI (Fase F)">
+                    <option value="XI.1">XI.1</option>
+                    <option value="XI.2">XI.2</option>
+                    <option value="XI.3">XI.3</option>
+                    <option value="XI.4">XI.4</option>
+                    <option value="XI.5">XI.5</option>
+                    <option value="XI.6">XI.6</option>
+                    <option value="XI.7">XI.7</option>
+                    <option value="XI.8">XI.8</option>
+                  </optgroup>
+                </select>
+                <p class="text-xs text-rose-400 hidden" id="err-kelas">Silakan pilih kelas Anda saat ini.</p>
+              </div>
+
+              <!-- Jenis Kelamin -->
+              <div class="space-y-1.5">
+                <label class="block text-sm font-medium text-slate-200">Jenis Kelamin <span class="text-rose-400">*</span></label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="jenisKelamin" value="Laki-laki" class="peer sr-only" required />
+                    <div class="px-4 py-3 rounded-xl glass-input text-sm text-center font-medium peer-checked:bg-royal-600/30 peer-checked:border-emerald-400 peer-checked:text-emerald-300 transition-all">
+                      Laki-laki
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="jenisKelamin" value="Perempuan" class="peer sr-only" required />
+                    <div class="px-4 py-3 rounded-xl glass-input text-sm text-center font-medium peer-checked:bg-royal-600/30 peer-checked:border-emerald-400 peer-checked:text-emerald-300 transition-all">
+                      Perempuan
+                    </div>
+                  </label>
+                </div>
+                <p class="text-xs text-rose-400 hidden" id="err-jenisKelamin">Pilih jenis kelamin Anda.</p>
+              </div>
+
+              <!-- Tempat Lahir -->
+              <div class="space-y-1.5">
+                <label for="tempatLahir" class="block text-sm font-medium text-slate-200">Tempat Lahir <span class="text-rose-400">*</span></label>
+                <input type="text" id="tempatLahir" name="tempatLahir" required placeholder="Contoh: Sengkang / Wajo" class="glass-input w-full px-4 py-3 rounded-xl text-sm" />
+                <p class="text-xs text-rose-400 hidden" id="err-tempatLahir">Tempat lahir wajib diisi.</p>
+              </div>
+
+              <!-- Tanggal Lahir -->
+              <div class="space-y-1.5">
+                <label for="tanggalLahir" class="block text-sm font-medium text-slate-200">Tanggal Lahir <span class="text-rose-400">*</span></label>
+                <input type="date" id="tanggalLahir" name="tanggalLahir" required class="glass-input w-full px-4 py-3 rounded-xl text-sm" />
+                <p class="text-xs text-rose-400 hidden" id="err-tanggalLahir">Tanggal lahir wajib diisi.</p>
+              </div>
+
+              <!-- Nomor WhatsApp -->
+              <div class="space-y-1.5">
+                <label for="noWa" class="block text-sm font-medium text-slate-200">Nomor WhatsApp Aktif <span class="text-rose-400">*</span></label>
+                <div class="relative">
+                  <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">+62</span>
+                  <input type="tel" id="noWa" name="noWa" required inputmode="tel" placeholder="81234567890" class="glass-input w-full pl-12 pr-4 py-3 rounded-xl text-sm" />
+                </div>
+                <p class="text-xs text-slate-400">Digunakan panitia untuk undangan grup seleksi & jadwal wawancara.</p>
+                <p class="text-xs text-rose-400 hidden" id="err-noWa">Nomor WhatsApp wajib diisi (minimal 9 digit angka).</p>
+              </div>
+
+              <!-- Alamat Lengkap -->
+              <div class="space-y-1.5">
+                <label for="alamat" class="block text-sm font-medium text-slate-200">Alamat Domisili Lengkap <span class="text-rose-400">*</span></label>
+                <input type="text" id="alamat" name="alamat" required placeholder="Jalan, Desa/Kelurahan, Kecamatan, Kab. Wajo" class="glass-input w-full px-4 py-3 rounded-xl text-sm" />
+                <p class="text-xs text-rose-400 hidden" id="err-alamat">Alamat lengkap wajib diisi.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub-group 2: Peminatan Sekbid & Motivasi -->
+          <div class="space-y-5 pt-4 border-t border-white/10">
+            <h3 class="font-display font-bold text-base text-emerald-300 flex items-center gap-2">
+              <i data-lucide="compass" class="w-4 h-4"></i>
+              <span>2. Pilihan Seksi Bidang (Sekbid) & Komitmen</span>
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <!-- Sekbid Prioritas 1 -->
+              <div class="space-y-1.5">
+                <label for="sekbid1" class="block text-sm font-medium text-slate-200">Pilihan Sekbid Prioritas 1 <span class="text-rose-400">*</span></label>
+                <select id="sekbid1" name="sekbid1" required class="glass-input w-full px-4 py-3 rounded-xl text-sm">
+                  <option value="">-- Pilih Sekbid Utama --</option>
+                  <option value="Sekbid 1 - Keimanan dan Ketakwaan Terhadap Tuhan YME">Sekbid 1 - Keimanan & Ketakwaan Terhadap Tuhan YME</option>
+                  <option value="Sekbid 2 - Budi Pekerti Luhur dan Bela Negara">Sekbid 2 - Budi Pekerti Luhur & Bela Negara</option>
+                  <option value="Sekbid 3 - Kepemimpinan dan Demokrasi">Sekbid 3 - Kepemimpinan & Demokrasi</option>
+                  <option value="Sekbid 4 - Prestasi Akademik, Seni, dan Olahraga">Sekbid 4 - Prestasi Akademik & Sains</option>
+                  <option value="Sekbid 5 - Pendidikan Jasmani, Olahraga, dan Kesehatan">Sekbid 5 - Jasmani, Olahraga & Kesehatan</option>
+                  <option value="Sekbid 6 - Apresiasi Seni dan Budaya">Sekbid 6 - Apresiasi Seni & Budaya</option>
+                  <option value="Sekbid 7 - Teknologi Informasi, Komunikasi, dan Humas">Sekbid 7 - TIK, Media & Humas</option>
+                  <option value="Sekbid 8 - Kewirausahaan dan Lingkungan Hidup">Sekbid 8 - Kewirausahaan & Lingkungan Hidup</option>
+                </select>
+                <p class="text-xs text-rose-400 hidden" id="err-sekbid1">Pilih Sekbid prioritas pertama Anda.</p>
+              </div>
+
+              <!-- Sekbid Prioritas 2 -->
+              <div class="space-y-1.5">
+                <label for="sekbid2" class="block text-sm font-medium text-slate-200">Pilihan Sekbid Prioritas 2 <span class="text-rose-400">*</span></label>
+                <select id="sekbid2" name="sekbid2" required class="glass-input w-full px-4 py-3 rounded-xl text-sm">
+                  <option value="">-- Pilih Sekbid Alternatif --</option>
+                  <option value="Sekbid 1 - Keimanan dan Ketakwaan Terhadap Tuhan YME">Sekbid 1 - Keimanan & Ketakwaan Terhadap Tuhan YME</option>
+                  <option value="Sekbid 2 - Budi Pekerti Luhur dan Bela Negara">Sekbid 2 - Budi Pekerti Luhur & Bela Negara</option>
+                  <option value="Sekbid 3 - Kepemimpinan dan Demokrasi">Sekbid 3 - Kepemimpinan & Demokrasi</option>
+                  <option value="Sekbid 4 - Prestasi Akademik, Seni, dan Olahraga">Sekbid 4 - Prestasi Akademik & Sains</option>
+                  <option value="Sekbid 5 - Pendidikan Jasmani, Olahraga, dan Kesehatan">Sekbid 5 - Jasmani, Olahraga & Kesehatan</option>
+                  <option value="Sekbid 6 - Apresiasi Seni dan Budaya">Sekbid 6 - Apresiasi Seni & Budaya</option>
+                  <option value="Sekbid 7 - Teknologi Informasi, Komunikasi, dan Humas">Sekbid 7 - TIK, Media & Humas</option>
+                  <option value="Sekbid 8 - Kewirausahaan dan Lingkungan Hidup">Sekbid 8 - Kewirausahaan & Lingkungan Hidup</option>
+                </select>
+                <p class="text-xs text-rose-400 hidden" id="err-sekbid2">Pilih Sekbid alternatif (tidak boleh sama dengan Prioritas 1).</p>
+              </div>
+            </div>
+
+            <!-- Pengalaman Organisasi -->
+            <div class="space-y-1.5">
+              <label for="pengalaman" class="block text-sm font-medium text-slate-200">Pengalaman Organisasi / Ekstrakurikuler</label>
+              <textarea id="pengalaman" name="pengalaman" rows="2" placeholder="Tuliskan pengalaman organisasi (SMP/SMA) atau ekstrakurikuler yang diikuti saat ini (jika belum ada, tulis 'Belum ada')." class="glass-input w-full px-4 py-3 rounded-xl text-sm"></textarea>
+            </div>
+
+            <!-- Visi, Misi & Motivasi -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <label for="motivasi" class="block text-sm font-medium text-slate-200">Visi, Misi, dan Motivasi Bergabung OSIS SMAN 11 Wajo <span class="text-rose-400">*</span></label>
+                <span id="motivasi-counter" class="text-xs text-slate-400">0 / 30 min karakter</span>
+              </div>
+              <textarea id="motivasi" name="motivasi" rows="4" required placeholder="Jelaskan alasan Anda ingin menjadi pengurus OSIS SMAN 11 Wajo serta gagasan/program kreatif yang ingin Anda wujudkan..." class="glass-input w-full px-4 py-3 rounded-xl text-sm"></textarea>
+              <p class="text-xs text-rose-400 hidden" id="err-motivasi">Motivasi wajib diisi minimal 30 karakter.</p>
+            </div>
+          </div>
+
+          <!-- Form Navigation Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
+            <button type="button" onclick="switchTab('persyaratan')" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 text-sm font-semibold flex items-center justify-center gap-2 transition-all">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              <span>Sebelumnya</span>
+            </button>
+            <button type="submit" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-royal-600 to-emerald-500 hover:from-royal-500 hover:to-emerald-400 text-white text-sm font-semibold shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all">
+              <span>Simpan & Lanjut Upload Berkas</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 4: UPLOAD BERKAS (YANG DIPERLUKAN)                -->
+    <!-- ========================================================= -->
+    <section id="section-berkas" class="tab-section space-y-6">
+      <div class="glass-panel rounded-3xl p-6 sm:p-8 md:p-10 space-y-8">
+        <div class="border-b border-white/10 pb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Langkah 2 dari 3</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">Unggah Berkas Persyaratan</h2>
+          <p class="text-slate-300 text-sm mt-1">Seret & lepas file ke kotak unggahan atau klik tombol pilih file. Maksimal ukuran <strong>2 MB</strong> per berkas.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          
+          <!-- Upload Slot 1: Pas Foto Formal -->
+          <div class="glass-card rounded-2xl p-5 space-y-3" id="card-pasFoto">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-display font-bold text-white text-base">1. Pas Foto Formal Terbaru <span class="text-rose-400">*</span></h3>
+                <p class="text-xs text-slate-400">Format: JPG, JPEG, PNG (Maks. 2MB)</p>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 text-[11px] font-semibold">Wajib</span>
+            </div>
+
+            <div class="upload-dropzone relative border-2 border-dashed border-white/20 hover:border-emerald-400/60 rounded-xl p-5 text-center transition-all cursor-pointer bg-navy-950/40"
+                 ondragover="handleDragOver(event, this)"
+                 ondragleave="handleDragLeave(event, this)"
+                 ondrop="handleDrop(event, 'pasFoto', this)"
+                 onclick="document.getElementById('input-pasFoto').click()">
+              <input type="file" id="input-pasFoto" accept="image/jpeg,image/png,image/jpg" class="hidden" onchange="handleFileSelect(event, 'pasFoto')" />
+              
+              <div id="empty-pasFoto" class="space-y-2 py-2">
+                <div class="w-11 h-11 rounded-full bg-blue-500/15 text-blue-300 flex items-center justify-center mx-auto">
+                  <i data-lucide="image-plus" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm font-medium text-slate-200">Klik atau seret Pas Foto ke sini</p>
+                <p class="text-xs text-slate-400">Seragam sekolah rapi, latar merah/biru</p>
+              </div>
+
+              <div id="filled-pasFoto" class="hidden text-left space-y-3" onclick="event.stopPropagation()">
+                <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                  <img id="thumb-pasFoto" src="" alt="Preview Pas Foto" class="w-12 h-14 object-cover rounded-lg border border-white/20 bg-navy-900" />
+                  <div class="flex-1 min-w-0">
+                    <p id="name-pasFoto" class="text-sm font-semibold text-white truncate">foto.jpg</p>
+                    <p id="size-pasFoto" class="text-xs text-emerald-400">0 KB • Siap dikirim</p>
+                  </div>
+                  <button type="button" onclick="removeFile('pasFoto')" class="p-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 transition-colors" title="Hapus file">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Slot 2: Kartu Pelajar / NISN -->
+          <div class="glass-card rounded-2xl p-5 space-y-3" id="card-kartuPelajar">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-display font-bold text-white text-base">2. Kartu Pelajar / Bukti NISN <span class="text-rose-400">*</span></h3>
+                <p class="text-xs text-slate-400">Format: PDF, JPG, PNG (Maks. 2MB)</p>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 text-[11px] font-semibold">Wajib</span>
+            </div>
+
+            <div class="upload-dropzone relative border-2 border-dashed border-white/20 hover:border-emerald-400/60 rounded-xl p-5 text-center transition-all cursor-pointer bg-navy-950/40"
+                 ondragover="handleDragOver(event, this)"
+                 ondragleave="handleDragLeave(event, this)"
+                 ondrop="handleDrop(event, 'kartuPelajar', this)"
+                 onclick="document.getElementById('input-kartuPelajar').click()">
+              <input type="file" id="input-kartuPelajar" accept=".pdf,image/jpeg,image/png,image/jpg" class="hidden" onchange="handleFileSelect(event, 'kartuPelajar')" />
+              
+              <div id="empty-kartuPelajar" class="space-y-2 py-2">
+                <div class="w-11 h-11 rounded-full bg-emerald-500/15 text-emerald-300 flex items-center justify-center mx-auto">
+                  <i data-lucide="id-card" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm font-medium text-slate-200">Klik atau seret Kartu Pelajar ke sini</p>
+                <p class="text-xs text-slate-400">Scan Kartu Pelajar atau Surat Keterangan Siswa</p>
+              </div>
+
+              <div id="filled-kartuPelajar" class="hidden text-left space-y-3" onclick="event.stopPropagation()">
+                <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                  <div class="w-11 h-11 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center shrink-0">
+                    <i data-lucide="file-check" class="w-5 h-5"></i>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p id="name-kartuPelajar" class="text-sm font-semibold text-white truncate">kartu.pdf</p>
+                    <p id="size-kartuPelajar" class="text-xs text-emerald-400">0 KB • Siap dikirim</p>
+                  </div>
+                  <button type="button" onclick="removeFile('kartuPelajar')" class="p-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 transition-colors" title="Hapus file">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Slot 3: Surat Izin Orang Tua -->
+          <div class="glass-card rounded-2xl p-5 space-y-3" id="card-suratIzin">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-display font-bold text-white text-base">3. Surat Izin Orang Tua / Wali <span class="text-rose-400">*</span></h3>
+                <p class="text-xs text-slate-400">Format: PDF, JPG, PNG (Maks. 2MB)</p>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-rose-500/20 text-rose-300 text-[11px] font-semibold">Wajib</span>
+            </div>
+
+            <div class="upload-dropzone relative border-2 border-dashed border-white/20 hover:border-emerald-400/60 rounded-xl p-5 text-center transition-all cursor-pointer bg-navy-950/40"
+                 ondragover="handleDragOver(event, this)"
+                 ondragleave="handleDragLeave(event, this)"
+                 ondrop="handleDrop(event, 'suratIzin', this)"
+                 onclick="document.getElementById('input-suratIzin').click()">
+              <input type="file" id="input-suratIzin" accept=".pdf,image/jpeg,image/png,image/jpg" class="hidden" onchange="handleFileSelect(event, 'suratIzin')" />
+              
+              <div id="empty-suratIzin" class="space-y-2 py-2">
+                <div class="w-11 h-11 rounded-full bg-purple-500/15 text-purple-300 flex items-center justify-center mx-auto">
+                  <i data-lucide="file-signature" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm font-medium text-slate-200">Klik atau seret Surat Izin ke sini</p>
+                <p class="text-xs text-slate-400">Sudah ditandatangani Orang Tua / Wali</p>
+              </div>
+
+              <div id="filled-suratIzin" class="hidden text-left space-y-3" onclick="event.stopPropagation()">
+                <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                  <div class="w-11 h-11 rounded-lg bg-purple-500/20 text-purple-300 flex items-center justify-center shrink-0">
+                    <i data-lucide="file-check" class="w-5 h-5"></i>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p id="name-suratIzin" class="text-sm font-semibold text-white truncate">izin.pdf</p>
+                    <p id="size-suratIzin" class="text-xs text-emerald-400">0 KB • Siap dikirim</p>
+                  </div>
+                  <button type="button" onclick="removeFile('suratIzin')" class="p-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 transition-colors" title="Hapus file">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Slot 4: Sertifikat Prestasi (Opsional) -->
+          <div class="glass-card rounded-2xl p-5 space-y-3" id="card-sertifikat">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-display font-bold text-white text-base">4. Sertifikat Prestasi / Organisasi</h3>
+                <p class="text-xs text-slate-400">Format: PDF, JPG, PNG (Maks. 2MB)</p>
+              </div>
+              <span class="px-2.5 py-0.5 rounded-full bg-slate-500/25 text-slate-300 text-[11px] font-semibold">Opsional</span>
+            </div>
+
+            <div class="upload-dropzone relative border-2 border-dashed border-white/20 hover:border-emerald-400/60 rounded-xl p-5 text-center transition-all cursor-pointer bg-navy-950/40"
+                 ondragover="handleDragOver(event, this)"
+                 ondragleave="handleDragLeave(event, this)"
+                 ondrop="handleDrop(event, 'sertifikat', this)"
+                 onclick="document.getElementById('input-sertifikat').click()">
+              <input type="file" id="input-sertifikat" accept=".pdf,image/jpeg,image/png,image/jpg" class="hidden" onchange="handleFileSelect(event, 'sertifikat')" />
+              
+              <div id="empty-sertifikat" class="space-y-2 py-2">
+                <div class="w-11 h-11 rounded-full bg-amber-500/15 text-amber-300 flex items-center justify-center mx-auto">
+                  <i data-lucide="award" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm font-medium text-slate-200">Klik atau seret Sertifikat (Jika Ada)</p>
+                <p class="text-xs text-slate-400">Piagam penghargaan akademik/non-akademik</p>
+              </div>
+
+              <div id="filled-sertifikat" class="hidden text-left space-y-3" onclick="event.stopPropagation()">
+                <div class="flex items-center gap-3 bg-white/5 p-3 rounded-xl border border-white/10">
+                  <div class="w-11 h-11 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0">
+                    <i data-lucide="file-check" class="w-5 h-5"></i>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p id="name-sertifikat" class="text-sm font-semibold text-white truncate">sertifikat.pdf</p>
+                    <p id="size-sertifikat" class="text-xs text-emerald-400">0 KB • Siap dikirim</p>
+                  </div>
+                  <button type="button" onclick="removeFile('sertifikat')" class="p-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 transition-colors" title="Hapus file">
+                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-white/10">
+          <button type="button" onclick="switchTab('formulir')" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-slate-200 text-sm font-semibold flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Kembali ke Formulir</span>
+          </button>
+          <button type="button" onclick="validateFilesAndNext()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gradient-to-r from-royal-600 to-emerald-500 hover:from-royal-500 hover:to-emerald-400 text-white text-sm font-semibold shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all">
+            <span>Tinjau & Konfirmasi Pendaftaran</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- SECTION 5: KONFIRMASI PENDAFTARAN & BUKTI REGISTRASI      -->
+    <!-- ========================================================= -->
+    <section id="section-konfirmasi" class="tab-section space-y-6">
+      
+      <!-- Pre-Submission Review View -->
+      <div id="review-container" class="glass-panel rounded-3xl p-6 sm:p-8 md:p-10 space-y-8">
+        <div class="border-b border-white/10 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Langkah 3 dari 3</span>
+            <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white mt-1">Konfirmasi Data Pendaftaran</h2>
+            <p class="text-slate-300 text-sm mt-1">Periksa kembali seluruh data diri dan kelengkapan berkas Anda sebelum mengirim pendaftaran secara final.</p>
+          </div>
+          <div id="readiness-pill" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-400/30 self-start sm:self-auto">
+            Memeriksa Kelengkapan...
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-6">
+          <!-- Summary Biodata -->
+          <div class="lg:col-span-7 glass-card rounded-2xl p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <h3 class="font-display font-bold text-white text-base flex items-center gap-2">
+                <i data-lucide="user-square-2" class="w-5 h-5 text-blue-400"></i>
+                <span>Ringkasan Biodata Calon Pengurus</span>
+              </h3>
+              <button onclick="switchTab('formulir')" class="text-xs text-emerald-400 hover:underline font-medium">Ubah Data</button>
+            </div>
+
+            <dl class="grid sm:grid-cols-2 gap-x-4 gap-y-3.5 text-sm">
+              <div>
+                <dt class="text-xs text-slate-400">Nama Lengkap</dt>
+                <dd id="rev-nama" class="font-semibold text-white mt-0.5">-</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">NIS / NISN</dt>
+                <dd id="rev-nisn" class="font-semibold text-white mt-0.5">-</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">Kelas / Rombel</dt>
+                <dd id="rev-kelas" class="font-semibold text-white mt-0.5">-</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">Jenis Kelamin</dt>
+                <dd id="rev-jk" class="font-semibold text-white mt-0.5">-</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">Tempat, Tanggal Lahir</dt>
+                <dd id="rev-ttl" class="font-semibold text-white mt-0.5">-</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">Nomor WhatsApp</dt>
+                <dd id="rev-wa" class="font-semibold text-emerald-300 mt-0.5">-</dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="text-xs text-slate-400">Alamat Lengkap</dt>
+                <dd id="rev-alamat" class="font-medium text-slate-200 mt-0.5">-</dd>
+              </div>
+              <div class="sm:col-span-2 pt-2 border-t border-white/10">
+                <dt class="text-xs text-slate-400">Pilihan Sekbid Prioritas 1</dt>
+                <dd id="rev-sekbid1" class="font-semibold text-blue-300 mt-0.5">-</dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="text-xs text-slate-400">Pilihan Sekbid Prioritas 2</dt>
+                <dd id="rev-sekbid2" class="font-semibold text-slate-200 mt-0.5">-</dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="text-xs text-slate-400">Pengalaman Organisasi</dt>
+                <dd id="rev-pengalaman" class="text-slate-300 mt-0.5">-</dd>
+              </div>
+              <div class="sm:col-span-2">
+                <dt class="text-xs text-slate-400">Visi, Misi & Motivasi</dt>
+                <dd id="rev-motivasi" class="text-slate-300 mt-0.5 bg-navy-950/50 p-3 rounded-xl border border-white/10 text-xs leading-relaxed">-</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Summary Berkas -->
+          <div class="lg:col-span-5 glass-card rounded-2xl p-6 space-y-4 flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 class="font-display font-bold text-white text-base flex items-center gap-2">
+                  <i data-lucide="files" class="w-5 h-5 text-emerald-400"></i>
+                  <span>Status Berkas Persyaratan</span>
+                </h3>
+                <button onclick="switchTab('berkas')" class="text-xs text-emerald-400 hover:underline font-medium">Kelola Berkas</button>
+              </div>
+
+              <div class="space-y-3 text-sm">
+                <div class="p-3 rounded-xl bg-navy-950/50 border border-white/10 flex items-center justify-between gap-2">
+                  <span class="text-slate-300">1. Pas Foto Formal</span>
+                  <span id="rev-file-pasFoto" class="text-xs font-semibold text-rose-400">Belum diunggah</span>
+                </div>
+                <div class="p-3 rounded-xl bg-navy-950/50 border border-white/10 flex items-center justify-between gap-2">
+                  <span class="text-slate-300">2. Kartu Pelajar / NISN</span>
+                  <span id="rev-file-kartuPelajar" class="text-xs font-semibold text-rose-400">Belum diunggah</span>
+                </div>
+                <div class="p-3 rounded-xl bg-navy-950/50 border border-white/10 flex items-center justify-between gap-2">
+                  <span class="text-slate-300">3. Surat Izin Orang Tua</span>
+                  <span id="rev-file-suratIzin" class="text-xs font-semibold text-rose-400">Belum diunggah</span>
+                </div>
+                <div class="p-3 rounded-xl bg-navy-950/50 border border-white/10 flex items-center justify-between gap-2">
+                  <span class="text-slate-300">4. Sertifikat Prestasi</span>
+                  <span id="rev-file-sertifikat" class="text-xs font-semibold text-slate-400">Opsional (Kosong)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Declaration Checkbox -->
+            <div class="pt-4 border-t border-white/10 space-y-4">
+              <label class="flex items-start gap-3 cursor-pointer select-none">
+                <input type="checkbox" id="agree-terms" class="mt-1 w-4 h-4 rounded border-white/20 bg-navy-950 text-emerald-500 focus:ring-emerald-400" />
+                <span class="text-xs text-slate-300 leading-relaxed">
+                  Saya menyatakan bahwa seluruh data dan berkas yang saya isikan adalah <strong>benar dan dapat dipertanggungjawabkan</strong>, serta saya bersedia mematuhi seluruh ketentuan seleksi Pengurus OSIS SMAN 11 Wajo Periode 2026/2027.
+                </span>
+              </label>
+
+              <button type="button" onclick="submitFinalRegistration()" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-royal-600 hover:from-emerald-400 hover:to-royal-500 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Kirim Pendaftaran Sekarang</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post-Submission Digital Registration Card (Success State) -->
+      <div id="success-container" class="hidden space-y-6">
+        <div id="print-ticket-area" class="glass-panel rounded-3xl p-6 sm:p-10 max-w-3xl mx-auto border-emerald-400/40 relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-royal-500 via-emerald-400 to-blue-500"></div>
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/15 pb-6">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center">
+                <i data-lucide="badge-check" class="w-7 h-7"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Bukti Pendaftaran Resmi</span>
+                <h2 class="font-display text-xl sm:text-2xl font-extrabold text-white">OSIS SMA NEGERI 11 WAJO</h2>
+                <p class="text-xs text-slate-400">Seleksi Calon Pengurus Periode 2026/2027</p>
+              </div>
+            </div>
+            <div class="bg-navy-950/70 px-4 py-2.5 rounded-xl border border-white/15 text-left sm:text-right">
+              <p class="text-[11px] uppercase tracking-wider text-slate-400">Nomor Registrasi</p>
+              <p id="ticket-reg-number" class="font-display font-extrabold text-base sm:text-lg text-emerald-300 tracking-wide">OSIS-SMAN11WAJO-2026-0000</p>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-12 gap-6 py-6 items-center">
+            <div class="sm:col-span-3 flex justify-center">
+              <img id="ticket-photo" src="https://placehold.co/150x200/112240/34d399?text=FOTO+3x4" alt="Foto Peserta" class="w-28 h-36 object-cover rounded-2xl border-2 border-emerald-400/40 shadow-lg" />
+            </div>
+            <div class="sm:col-span-9 grid sm:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="text-xs text-slate-400">Nama Lengkap</p>
+                <p id="ticket-nama" class="font-bold text-white text-base">-</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">NIS / NISN</p>
+                <p id="ticket-nisn" class="font-semibold text-white">-</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Kelas / Rombel</p>
+                <p id="ticket-kelas" class="font-semibold text-white">-</p>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Waktu Pendaftaran</p>
+                <p id="ticket-waktu" class="font-semibold text-slate-200">-</p>
+              </div>
+              <div class="sm:col-span-2">
+                <p class="text-xs text-slate-400">Pilihan Seksi Bidang (Prioritas 1)</p>
+                <p id="ticket-sekbid" class="font-semibold text-emerald-300">-</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-blue-500/10 border border-blue-400/25 text-xs text-slate-300 space-y-1">
+            <p class="font-semibold text-blue-300">Catatan Penting untuk Peserta:</p>
+            <p>1. Simpan atau cetak kartu bukti pendaftaran ini sebagai syarat mengikuti tahapan Tes Wawancara.</p>
+            <p>2. Klik tombol <strong>Konfirmasi ke Panitia (WhatsApp)</strong> di bawah untuk melaporkan nomor registrasi Anda.</p>
+          </div>
+        </div>
+
+        <!-- Action Buttons After Registration -->
+        <div class="max-w-3xl mx-auto flex flex-wrap items-center justify-center gap-3 no-print">
+          <button type="button" onclick="copyRegNumber()" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white text-sm font-semibold flex items-center gap-2 transition-all">
+            <i data-lucide="copy" class="w-4 h-4 text-emerald-400"></i>
+            <span>Salin No. Registrasi</span>
+          </button>
+          <button type="button" onclick="window.print()" class="px-5 py-3 rounded-xl bg-royal-600 hover:bg-royal-500 text-white text-sm font-semibold flex items-center gap-2 transition-all">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            <span>Cetak / Simpan PDF</span>
+          </button>
+          <a id="wa-confirm-link" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold flex items-center gap-2 shadow-lg shadow-emerald-500/20 transition-all">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Konfirmasi ke Panitia (WhatsApp)</span>
+          </a>
+          <button type="button" onclick="editAfterSubmit()" class="px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-medium flex items-center gap-1.5 transition-all">
+            <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+            <span>Edit Data</span>
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-navy-950/60 backdrop-blur-md mt-auto no-print">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+      <div class="text-center sm:text-left">
+        <p class="font-semibold text-slate-200">&copy; 2026 Panitia Pemilihan Pengurus OSIS SMA Negeri 11 Wajo</p>
+        <p class="mt-0.5">Jl. Pendidikan, Kabupaten Wajo, Sulawesi Selatan • Periode Kepengurusan 2026/2027</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button onclick="openDeployModal()" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white flex items-center gap-2 transition-colors">
+          <i data-lucide="rocket" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Panduan Deploy GitHub & Vercel</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Deploy Guide Modal (GitHub & Vercel) -->
+  <div id="deploy-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-navy-950/80 backdrop-blur-md">
+    <div class="glass-panel rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-5 relative">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center">
+            <i data-lucide="github" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display font-bold text-lg text-white">Siap Deploy ke GitHub & Vercel</h3>
+        </div>
+        <button onclick="closeDeployModal()" class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+        <p>Aplikasi ini dibangun sebagai <strong>Single-File Static Web App</strong> (<code class="text-emerald-300 bg-white/5 px-1.5 py-0.5 rounded">index.html</code>) tanpa memerlukan proses <em>build</em> atau instalasi dependensi rumit:</p>
+        <ol class="list-decimal list-inside space-y-2 text-xs sm:text-sm text-slate-300">
+          <li>Simpan file ini dengan nama <strong class="text-white">index.html</strong>.</li>
+          <li>Buat repository baru di <strong class="text-white">GitHub</strong> (misal: <code class="text-blue-300">osis-sman11-wajo</code>) dan unggah file <code class="text-emerald-300">index.html</code> ke branch <code class="text-white">main</code>.</li>
+          <li>Buka dashboard <strong class="text-white">Vercel</strong>, pilih <em>Add New Project</em>, lalu impor repository GitHub tersebut.</li>
+          <li>Biarkan <em>Framework Preset</em> pada <strong>Other</strong> dan klik <strong>Deploy</strong>. Website langsung online dalam hitungan detik!</li>
+        </ol>
+      </div>
+
+      <div class="pt-2 flex justify-end">
+        <button onclick="closeDeployModal()" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-navy-950 font-bold text-xs transition-colors">
+          Mengerti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application JavaScript -->
+  <script>
+    // =========================================================
+    // STATE MANAGEMENT & LOCAL STORAGE
+    // =========================================================
+    const STORAGE_KEY = 'osis_sman11_wajo_2026_state';
+
+    let appState = {
+      activeTab: 'beranda',
+      formData: {
+        namaLengkap: '',
+        nisn: '',
+        kelas: '',
+        jenisKelamin: '',
+        tempatLahir: '',
+        tanggalLahir: '',
+        noWa: '',
+        alamat: '',
+        sekbid1: '',
+        sekbid2: '',
+        pengalaman: '',
+        motivasi: ''
+      },
+      // File metadata & preview (DataURL kept for pasFoto if small)
+      files: {
+        pasFoto: null,
+        kartuPelajar: null,
+        suratIzin: null,
+        sertifikat: null
+      },
+      submitted: false,
+      registrationNumber: '',
+      submittedAt: ''
+    };
+
+    // Initialize Icons & Restore State on Load
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      loadStateFromStorage();
+      bindFormListeners();
+      switchTab(appState.activeTab || 'beranda', false);
+    });
+
+    function loadStateFromStorage() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          appState = { ...appState, ...parsed };
+          populateFormInputs();
+          restoreFilePreviews();
+          if (appState.submitted && appState.registrationNumber) {
+            renderSuccessTicket();
+          }
+        }
+      } catch (e) {
+        console.warn('Gagal memuat penyimpanan lokal:', e);
+      }
+    }
+
+    function saveStateToStorage() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {
+        // Fallback if DataURL exceeds quota: save without pasFoto dataUrl
+        try {
+          const lightState = JSON.parse(JSON.stringify(appState));
+          if (lightState.files.pasFoto) lightState.files.pasFoto.dataUrl = null;
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(lightState));
+        } catch (err) {
+          console.warn('Storage penuh:', err);
+        }
+      }
+    }
+
+    // =========================================================
+    // NAVIGATION & TAB SWITCHING
+    // =========================================================
+    function switchTab(tabId, scrollToTop = true) {
+      appState.activeTab = tabId;
+      saveStateToStorage();
+
+      // Hide all sections
+      document.querySelectorAll('.tab-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+
+      // Show selected section
+      const target = document.getElementById(`section-${tabId}`);
+      if (target) target.classList.add('active');
+
+      // Update Nav Buttons Styling
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const isTarget = btn.getAttribute('data-nav') === tabId;
+        if (isTarget) {
+          btn.classList.add('bg-gradient-to-r', 'from-royal-600/80', 'to-emerald-500/80', 'text-white', 'shadow-md');
+          btn.classList.remove('text-slate-300', 'hover:text-white', 'hover:bg-white/5');
+        } else {
+          btn.classList.remove('bg-gradient-to-r', 'from-royal-600/80', 'to-emerald-500/80', 'text-white', 'shadow-md');
+          btn.classList.add('text-slate-300', 'hover:text-white', 'hover:bg-white/5');
+        }
+      });
+
+      // Update Step Progress Bar for Form Steps
+      const stepBar = document.getElementById('step-indicator-bar');
+      const badgeText = document.getElementById('step-badge-text');
+      const titleText = document.getElementById('step-title-text');
+      const p1 = document.getElementById('prog-1');
+      const p2 = document.getElementById('prog-2');
+      const p3 = document.getElementById('prog-3');
+
+      if (['formulir', 'berkas', 'konfirmasi'].includes(tabId)) {
+        stepBar.classList.remove('hidden');
+        if (tabId === 'formulir') {
+          badgeText.textContent = 'Langkah 1 dari 3';
+          titleText.textContent = 'Pengisian Formulir Biodata';
+          p1.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-emerald-400 transition-all';
+          p2.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-white/15 transition-all';
+          p3.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-white/15 transition-all';
+        } else if (tabId === 'berkas') {
+          badgeText.textContent = 'Langkah 2 dari 3';
+          titleText.textContent = 'Unggah Berkas Persyaratan';
+          p1.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-emerald-400 transition-all';
+          p2.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-emerald-400 transition-all';
+          p3.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-white/15 transition-all';
+        } else if (tabId === 'konfirmasi') {
+          badgeText.textContent = 'Langkah 3 dari 3';
+          titleText.textContent = 'Konfirmasi & Bukti Pendaftaran';
+          p1.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-emerald-400 transition-all';
+          p2.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-emerald-400 transition-all';
+          p3.className = 'w-8 sm:w-14 h-1.5 rounded-full bg-emerald-400 transition-all';
+          populateConfirmationReview();
+        }
+      } else {
+        stepBar.classList.add('hidden');
+      }
+
+      if (scrollToTop) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      lucide.createIcons();
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // =========================================================
+    // FORM HANDLING & REAL-TIME VALIDATION
+    // =========================================================
+    function bindFormListeners() {
+      const form = document.getElementById('osis-form');
+      const inputs = form.querySelectorAll('input, select, textarea');
+
+      inputs.forEach(el => {
+        el.addEventListener('input', () => {
+          syncInputToState(el);
+          updateMotivasiCounter();
+        });
+        el.addEventListener('change', () => {
+          syncInputToState(el);
+        });
+      });
+    }
+
+    function syncInputToState(el) {
+      if (el.type === 'radio') {
+        if (el.checked) appState.formData[el.name] = el.value;
+      } else {
+        appState.formData[el.name] = el.value;
+      }
+      saveStateToStorage();
+    }
+
+    function populateFormInputs() {
+      const d = appState.formData;
+      Object.keys(d).forEach(key => {
+        if (key === 'jenisKelamin') {
+          const radio = document.querySelector(`input[name="jenisKelamin"][value="${d[key]}"]`);
+          if (radio) radio.checked = true;
+        } else {
+          const el = document.getElementById(key);
+          if (el) el.value = d[key] || '';
+        }
+      });
+      updateMotivasiCounter();
+    }
+
+    function updateMotivasiCounter() {
+      const val = document.getElementById('motivasi').value || '';
+      const counter = document.getElementById('motivasi-counter');
+      counter.textContent = `${val.length} / 30 min karakter`;
+      if (val.length >= 30) {
+        counter.classList.remove('text-slate-400');
+        counter.classList.add('text-emerald-400');
+      } else {
+        counter.classList.add('text-slate-400');
+        counter.classList.remove('text-emerald-400');
+      }
+    }
+
+    function validateFormFields() {
+      let valid = true;
+      const d = appState.formData;
+
+      const checks = [
+        { id: 'namaLengkap', ok: (d.namaLengkap || '').trim().length >= 3 },
+        { id: 'nisn', ok: /^\d{5,15}$/.test((d.nisn || '').trim()) },
+        { id: 'kelas', ok: (d.kelas || '').trim() !== '' },
+        { id: 'jenisKelamin', ok: (d.jenisKelamin || '').trim() !== '' },
+        { id: 'tempatLahir', ok: (d.tempatLahir || '').trim().length >= 2 },
+        { id: 'tanggalLahir', ok: (d.tanggalLahir || '').trim() !== '' },
+        { id: 'noWa', ok: /^\d{8,14}$/.test((d.noWa || '').replace(/\D/g, '')) },
+        { id: 'alamat', ok: (d.alamat || '').trim().length >= 5 },
+        { id: 'sekbid1', ok: (d.sekbid1 || '').trim() !== '' },
+        { id: 'sekbid2', ok: (d.sekbid2 || '').trim() !== '' && d.sekbid2 !== d.sekbid1 },
+        { id: 'motivasi', ok: (d.motivasi || '').trim().length >= 30 }
+      ];
+
+      checks.forEach(item => {
+        const errEl = document.getElementById(`err-${item.id}`);
+        if (errEl) {
+          if (!item.ok) {
+            errEl.classList.remove('hidden');
+            valid = false;
+          } else {
+            errEl.classList.add('hidden');
+          }
+        }
+      });
+
+      return valid;
+    }
+
+    function handleFormNext(event) {
+      event.preventDefault();
+      if (validateFormFields()) {
+        showToast('Biodata berhasil disimpan! Silakan lanjut unggah berkas.', 'success');
+        switchTab('berkas');
+      } else {
+        showToast('Mohon lengkapi semua kolom wajib dengan benar.', 'error');
+      }
+    }
+
+    function resetFormPrompt() {
+      // Custom inline confirmation toast instead of confirm()
+      appState.formData = {
+        namaLengkap: '', nisn: '', kelas: '', jenisKelamin: '',
+        tempatLahir: '', tanggalLahir: '', noWa: '', alamat: '',
+        sekbid1: '', sekbid2: '', pengalaman: '', motivasi: ''
+      };
+      appState.files = { pasFoto: null, kartuPelajar: null, suratIzin: null, sertifikat: null };
+      appState.submitted = false;
+      appState.registrationNumber = '';
+      saveStateToStorage();
+      document.getElementById('osis-form').reset();
+      restoreFilePreviews();
+      document.getElementById('review-container').classList.remove('hidden');
+      document.getElementById('success-container').classList.add('hidden');
+      updateMotivasiCounter();
+      showToast('Seluruh isian formulir telah diatur ulang.', 'info');
+    }
+
+    // =========================================================
+    // FILE UPLOAD, DRAG & DROP, VALIDATION & PREVIEW
+    // =========================================================
+    function handleDragOver(e, zone) {
+      e.preventDefault();
+      zone.classList.add('border-emerald-400', 'bg-emerald-500/10');
+    }
+
+    function handleDragLeave(e, zone) {
+      e.preventDefault();
+      zone.classList.remove('border-emerald-400', 'bg-emerald-500/10');
+    }
+
+    function handleDrop(e, key, zone) {
+      e.preventDefault();
+      zone.classList.remove('border-emerald-400', 'bg-emerald-500/10');
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        processUploadedFile(e.dataTransfer.files[0], key);
+      }
+    }
+
+    function handleFileSelect(e, key) {
+      if (e.target.files && e.target.files.length > 0) {
+        processUploadedFile(e.target.files[0], key);
+      }
+    }
+
+    function processUploadedFile(file, key) {
+      const maxBytes = 2 * 1024 * 1024; // 2MB
+      if (file.size > maxBytes) {
+        showToast(`Ukuran file "${file.name}" melebihi batas maksimal 2 MB.`, 'error');
+        return;
+      }
+
+      const allowedTypes = key === 'pasFoto'
+        ? ['image/jpeg', 'image/png', 'image/jpg']
+        : ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+
+      if (!allowedTypes.includes(file.type)) {
+        showToast(`Format file tidak didukung untuk berkas ini.`, 'error');
+        return;
+      }
+
+      const fileMeta = {
+        name: file.name,
+        sizeText: formatFileSize(file.size),
+        type: file.type,
+        dataUrl: null
+      };
+
+      if (key === 'pasFoto' && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          fileMeta.dataUrl = ev.target.result;
+          appState.files[key] = fileMeta;
+          saveStateToStorage();
+          restoreFilePreviews();
+          showToast(`Berkas "${file.name}" berhasil diunggah.`, 'success');
+        };
+        reader.readAsDataURL(file);
+      } else {
+        appState.files[key] = fileMeta;
+        saveStateToStorage();
+        restoreFilePreviews();
+        showToast(`Berkas "${file.name}" berhasil diunggah.`, 'success');
+      }
+    }
+
+    function removeFile(key) {
+      appState.files[key] = null;
+      const inputEl = document.getElementById(`input-${key}`);
+      if (inputEl) inputEl.value = '';
+      saveStateToStorage();
+      restoreFilePreviews();
+      showToast('Berkas dihapus.', 'info');
+    }
+
+    function restoreFilePreviews() {
+      const keys = ['pasFoto', 'kartuPelajar', 'suratIzin', 'sertifikat'];
+      keys.forEach(key => {
+        const fileData = appState.files[key];
+        const emptyEl = document.getElementById(`empty-${key}`);
+        const filledEl = document.getElementById(`filled-${key}`);
+        const nameEl = document.getElementById(`name-${key}`);
+        const sizeEl = document.getElementById(`size-${key}`);
+
+        if (fileData) {
+          emptyEl.classList.add('hidden');
+          filledEl.classList.remove('hidden');
+          nameEl.textContent = fileData.name;
+          sizeEl.textContent = `${fileData.sizeText} • Siap dikirim`;
+          if (key === 'pasFoto') {
+            const thumb = document.getElementById('thumb-pasFoto');
+            thumb.src = fileData.dataUrl || 'https://placehold.co/120x150/112240/34d399?text=FOTO';
+          }
+        } else {
+          emptyEl.classList.remove('hidden');
+          filledEl.classList.add('hidden');
+        }
+      });
+      lucide.createIcons();
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024) return bytes + ' B';
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+    }
+
+    function validateFilesAndNext() {
+      const f = appState.files;
+      if (!f.pasFoto || !f.kartuPelajar || !f.suratIzin) {
+        showToast('Harap unggah 3 berkas wajib (Pas Foto, Kartu Pelajar, & Surat Izin Orang Tua).', 'error');
+        return;
+      }
+      showToast('Semua berkas wajib lengkap! Silakan tinjau pendaftaran Anda.', 'success');
+      switchTab('konfirmasi');
+    }
+
+    // =========================================================
+    // CONFIRMATION REVIEW & FINAL SUBMISSION
+    // =========================================================
+    function populateConfirmationReview() {
+      const d = appState.formData;
+      const f = appState.files;
+
+      document.getElementById('rev-nama').textContent = d.namaLengkap || '-';
+      document.getElementById('rev-nisn').textContent = d.nisn || '-';
+      document.getElementById('rev-kelas').textContent = d.kelas || '-';
+      document.getElementById('rev-jk').textContent = d.jenisKelamin || '-';
+      document.getElementById('rev-ttl').textContent = (d.tempatLahir && d.tanggalLahir)
+        ? `${d.tempatLahir}, ${formatDateIndo(d.tanggalLahir)}`
+        : '-';
+      document.getElementById('rev-wa').textContent = d.noWa ? `+62 ${d.noWa.replace(/^0+/, '')}` : '-';
+      document.getElementById('rev-alamat').textContent = d.alamat || '-';
+      document.getElementById('rev-sekbid1').textContent = d.sekbid1 || '-';
+      document.getElementById('rev-sekbid2').textContent = d.sekbid2 || '-';
+      document.getElementById('rev-pengalaman').textContent = (d.pengalaman || '').trim() || 'Tidak ada keterangan';
+      document.getElementById('rev-motivasi').textContent = d.motivasi || '-';
+
+      // Update file status indicators
+      updateRevFileStatus('pasFoto', f.pasFoto, true);
+      updateRevFileStatus('kartuPelajar', f.kartuPelajar, true);
+      updateRevFileStatus('suratIzin', f.suratIzin, true);
+      updateRevFileStatus('sertifikat', f.sertifikat, false);
+
+      // Update Readiness Pill
+      const pill = document.getElementById('readiness-pill');
+      const isFormReady = validateFormFields();
+      const isFilesReady = Boolean(f.pasFoto && f.kartuPelajar && f.suratIzin);
+
+      if (isFormReady && isFilesReady) {
+        pill.textContent = 'Siap Dikirim (Data & Berkas Lengkap)';
+        pill.className = 'px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 self-start sm:self-auto';
+      } else {
+        pill.textContent = 'Belum Lengkap (Periksa Formulir/Berkas)';
+        pill.className = 'px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-400/30 self-start sm:self-auto';
+      }
+    }
+
+    function updateRevFileStatus(key, fileObj, required) {
+      const el = document.getElementById(`rev-file-${key}`);
+      if (fileObj) {
+        el.textContent = `✓ ${fileObj.name}`;
+        el.className = 'text-xs font-semibold text-emerald-400 truncate max-w-[180px]';
+      } else if (required) {
+        el.textContent = '✕ Belum diunggah (Wajib)';
+        el.className = 'text-xs font-semibold text-rose-400';
+      } else {
+        el.textContent = 'Opsional (Tidak dilampirkan)';
+        el.className = 'text-xs font-medium text-slate-400';
+      }
+    }
+
+    function submitFinalRegistration() {
+      if (!validateFormFields()) {
+        showToast('Biodata belum lengkap. Silakan periksa kembali Langkah 1.', 'error');
+        switchTab('formulir');
+        return;
+      }
+
+      const f = appState.files;
+      if (!f.pasFoto || !f.kartuPelajar || !f.suratIzin) {
+        showToast('Berkas wajib belum lengkap. Silakan unggah di Langkah 2.', 'error');
+        switchTab('berkas');
+        return;
+      }
+
+      const agreed = document.getElementById('agree-terms').checked;
+      if (!agreed) {
+        showToast('Centang kotak pernyataan kebenaran data terlebih dahulu.', 'error');
+        return;
+      }
+
+      // Generate Unique Registration Number
+      if (!appState.registrationNumber) {
+        const randomCode = Math.floor(1000 + Math.random() * 9000);
+        appState.registrationNumber = `OSIS-SMAN11WAJO-2026-${randomCode}`;
+      }
+
+      const now = new Date();
+      appState.submittedAt = now.toLocaleDateString('id-ID', {
+        day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      }) + ' WITA';
+      appState.submitted = true;
+      saveStateToStorage();
+
+      renderSuccessTicket();
+      showToast('Selamat! Pendaftaran Anda berhasil dikirim.', 'success');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderSuccessTicket() {
+      const d = appState.formData;
+      const f = appState.files;
+
+      document.getElementById('review-container').classList.add('hidden');
+      document.getElementById('success-container').classList.remove('hidden');
+
+      document.getElementById('ticket-reg-number').textContent = appState.registrationNumber;
+      document.getElementById('ticket-nama').textContent = d.namaLengkap;
+      document.getElementById('ticket-nisn').textContent = d.nisn;
+      document.getElementById('ticket-kelas').textContent = d.kelas;
+      document.getElementById('ticket-waktu').textContent = appState.submittedAt;
+      document.getElementById('ticket-sekbid').textContent = d.sekbid1;
+
+      if (f.pasFoto && f.pasFoto.dataUrl) {
+        document.getElementById('ticket-photo').src = f.pasFoto.dataUrl;
+      }
+
+      // Prepare WhatsApp Confirmation Message
+      const waMessage = encodeURIComponent(
+        `Assalamu'alaikum Wr. Wb. Panitia Seleksi OSIS SMAN 11 Wajo 2026/2027.\n\n` +
+        `Saya telah menyelesaikan pendaftaran daring dengan rincian:\n` +
+        `• No. Registrasi: *${appState.registrationNumber}*\n` +
+        `• Nama: *${d.namaLengkap}*\n` +
+        `• Kelas: *${d.kelas}*\n` +
+        `• Sekbid Pilihan 1: *${d.sekbid1}*\n\n` +
+        `Mohon konfirmasi untuk tahapan seleksi selanjutnya. Terima kasih.`
+      );
+      document.getElementById('wa-confirm-link').href = `https://wa.me/6281234567890?text=${waMessage}`;
+      lucide.createIcons();
+    }
+
+    function editAfterSubmit() {
+      document.getElementById('success-container').classList.add('hidden');
+      document.getElementById('review-container').classList.remove('hidden');
+      populateConfirmationReview();
+    }
+
+    // =========================================================
+    // UTILITIES: COPY, FORMAT DATE, TOAST & MODAL
+    // =========================================================
+    function copyRegNumber() {
+      const regText = appState.registrationNumber;
+      const tempInput = document.createElement('input');
+      tempInput.value = regText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast(`Nomor Registrasi "${regText}" berhasil disalin!`, 'success');
+    }
+
+    function formatDateIndo(isoDate) {
+      if (!isoDate) return '-';
+      const parts = isoDate.split('-');
+      if (parts.length !== 3) return isoDate;
+      const months = [
+        'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+      ];
+      return `${parseInt(parts[2], 10)} ${months[parseInt(parts[1], 10) - 1]} ${parts[0]}`;
+    }
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      
+      const styles = {
+        success: 'bg-emerald-950/90 border-emerald-400/50 text-emerald-200',
+        error: 'bg-rose-950/90 border-rose-400/50 text-rose-200',
+        info: 'bg-navy-900/95 border-blue-400/40 text-slate-200'
+      };
+
+      const icons = {
+        success: 'check-circle-2',
+        error: 'alert-circle',
+        info: 'info'
+      };
+
+      toast.className = `pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl border backdrop-blur-xl shadow-xl text-xs sm:text-sm font-medium transition-all transform translate-x-0 ${styles[type] || styles.info}`;
+      toast.innerHTML = `
+        <i data-lucide="${icons[type] || 'info'}" class="w-4 h-4 shrink-0"></i>
+        <span class="flex-1">${message}</span>
+      `;
+
+      container.appendChild(toast);
+      lucide.createIcons();
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(16px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 3600);
+    }
+
+    function openDeployModal() {
+      const modal = document.getElementById('deploy-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      lucide.createIcons();
+    }
+
+    function closeDeployModal() {
+      const modal = document.getElementById('deploy-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  </script>
+</body>
+</html>
